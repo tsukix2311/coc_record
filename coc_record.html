@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>シナリオ通過記録</title>
+  <link rel="icon" href="./image/tom.png" type="image/png" />
+  <style>
+    body {
+      font-family: "Yu Gothic", sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #6c0000;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-buttons button {
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      border: none;
+      background-color: #444;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .filter-buttons button:hover {
+      background-color: #c0392b;
+    }
+
+    .scenario {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .scenario h2 {
+      margin: 0 0 0.5rem;
+      color: #000000;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #eee;
+      color: #444;
+      padding: 0.3em 0.6em;
+      border-radius: 0.3em;
+      font-size: 0.8em;
+      margin-right: 0.4em;
+    }
+
+    .status {
+      display: inline-block;
+      font-size: 0.8em;
+      background: #ccc;
+      padding: 0.2em 0.6em;
+      border-radius: 4px;
+      margin-left: 0.5rem;
+      color: #333;
+    }
+
+    .reveal-button {
+      margin-top: 1rem;
+      background: #c0392b;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .reveal-button:hover {
+      background: #a83227;
+    }
+
+    .spoiler {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-left: 4px solid #999;
+      background-color: #f0f0f0;
+      display: none;
+    }
+   
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #777;
+    }
+  </style>
+
+  <script>
+    function toggleSpoiler(id) {
+      const content = document.getElementById(id);
+      content.style.display = content.style.display === "none" ? "block" : "none";
+    }
+
+    function filterScenarios(status) {
+      const all = document.querySelectorAll('.scenario');
+      all.forEach(card => {
+        if (status === 'all' || card.dataset.status === status) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <h1>シナリオ通過記録</h1>
+    <p>通過予定/通過中/通過済みに分かれています！<br>
+      キャラクター紹介にネタバレは含まれません！
+    </p>
+  </header>
+
+  <main>
+    <div class="filter-buttons">
+      <button onclick="filterScenarios('all')">すべて表示</button>
+      <button onclick="filterScenarios('cleared')">通過済</button>
+      <button onclick="filterScenarios('ongoing')">通過中</button>
+      <button onclick="filterScenarios('notstarted')">通過予定</button>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2>初恋性ストックホルム症候群 <span class="status">通過済</span></h2>
+      <p><strong>プレイ日：</strong>未記録</p>
+      <p>
+        <a href="https://trpgtanutanu.booth.pm/items/6407066" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2>花冷えに亡く季節 <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>HO1 『記』</p>
+      <p>
+        <a href="https://haruobake.booth.pm/items/2086541" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2>かいぶつたちとマホラカルト <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>HO4『天使』</p>
+      <p>
+        <a href="https://tanochidane.booth.pm/items/1715406" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <!-- <p>
+        <a href="./character/momoka.html" target="_blank" rel="noopener noreferrer">
+          ▶ キャラクター紹介はこちら
+        </a>
+      </p> -->
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2>Good morning ALL <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>『重病人』</p>
+      <p>
+        <a href="https://kimeall.booth.pm/items/2976456" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <!-- <p>
+        <a href="./character/AshidoHanaya.html" target="_blank" rel="noopener noreferrer">
+          ▶ キャラクター紹介はこちら
+        </a>
+      </p> -->
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2>ソープスクール <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>HO1</p>
+      <p>
+        <a href="https://akitako.booth.pm/items/2108125" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <!-- <p>
+        <a href="./character/OumiMinamoto.html" target="_blank" rel="noopener noreferrer">
+          ▶ キャラクター紹介はこちら
+        </a>
+      </p> -->
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2>Good night,Judas. <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>HO3</p>
+      <p>
+        <a href="https://arow-trap.booth.pm/items/2669653" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2>デウス・エクス・マキナは死んだ <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>HO2 『ヒト』</p>
+      <p>
+        <a href="https://matumaru1232.booth.pm/items/1371817" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <!-- <p>
+        <a href="./character/NA.html" target="_blank" rel="noopener noreferrer">
+          ▶ キャラクター紹介はこちら
+        </a>
+      </p> -->
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2>海も枯れるまで  <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>HO1</p>
+      <p>
+        <a href="https://akitako.booth.pm/items/1712065" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2>掠奪アルマディナ・アルファーデラ  <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>HO2</p>
+      <p>
+        <a href="https://coc-tera.booth.pm/items/5589740" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2>鰯と柊  <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>HO2 『信者』</p>
+      <p>
+        <a href="https://tabakoya-syoukai.booth.pm/items/3403696" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2> 怪士係 <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>HO3 『天狗』</p>
+      <p>
+        <a href="https://genka-0229.booth.pm/items/4913866" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2> プラトンの余談 <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>HO1 『語り部』</p>
+      <p>
+        <a href="https://himari-tuki1313.booth.pm/items/6048264" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2> 丑三つ時の番人共よ。 <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>未記録</p>
+      <p><strong>HO：</strong>HO2 『野良』</p>
+      <p>
+        <a href="https://tayutaum-zzz.booth.pm/items/6578737" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="ongoing">
+      <h2> CosmosƆREatiOn <span class="status">通過中</span></h2>
+      <p><strong>プレイ開始日：</strong>2025/6/1</p>
+      <p><strong>HO：</strong>HO1</p>
+      <p>
+        <a href="https://coc-tera.booth.pm/items/5184236" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="notstarted">
+      <h2> CosmosƆREatiOn <span class="status">通過予定</span></h2>
+      <p><strong>プレイ開始日：</strong>2025/7/14</p>
+      <p><strong>HO：</strong>HO太陽</p>
+      <p>
+        <a href="https://tabakoya-syoukai.booth.pm/items/5202796" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="cleared">
+      <h2> テストプレイ卓 <span class="status">通過済</span></h2>
+      <p><strong>プレイ開始日：</strong>2025/6/10</p>
+      <p><strong>HO：</strong>HO1</p>
+      <p>
+        <a href="" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら（まだない）
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="notstarted">
+      <h2> ようこそ！迷冥市役所都市伝説課へ！ <span class="status">通過予定</span></h2>
+      <p><strong>プレイ開始日：</strong>2025/8/1</p>
+      <p><strong>HO：</strong>HO1 『都市伝説課の担当者』</p>
+      <p>
+        <a href="https://sabaku-yozora.booth.pm/items/2432227" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="notstarted">
+      <h2> 咲くも言わぬも花次第 <span class="status">通過予定</span></h2>
+      <p><strong>プレイ開始日：</strong>2025/8/4</p>
+      <p><strong>HO：</strong>HO1 『椿』</p>
+      <p>
+        <a href="https://krm4.booth.pm/items/5050865" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="notstarted">
+      <h2> 青い鳥がないた <span class="status">通過予定</span></h2>
+      <p><strong>プレイ開始日：</strong>2025/7/28</p>
+      <!-- <p><strong>HO：</strong>HO1 『椿』</p> -->
+      <p>
+        <a href="https://sashiking.booth.pm/items/5892866" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="notstarted">
+      <h2> リバースリバースリバース <span class="status">通過予定</span></h2>
+      <p><strong>プレイ開始日：</strong>2025/9/1</p>
+      <p><strong>HO：</strong>HO2 『天秤』</p>
+      <p>
+        <a href="https://chimeisho.booth.pm/items/4592163" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのBOOTHリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+    <div class="scenario" data-status="notstarted">
+      <h2> 庭師は何を口遊む <span class="status">通過予定</span></h2>
+      <p><strong>プレイ開始日：</strong>2026/2/7</p>
+      <p><strong>HO：</strong>HO3</p>
+      <p>
+        <a href="https://www.pixiv.net/novel/show.php?id=9232553" target="_blank" rel="noopener noreferrer">
+          ▶ シナリオのリンクはこちら
+        </a>
+      </p>
+      <div>
+        <span class="tag">CoC</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; トマトの精霊。シナリオ通過記録
+  </footer>
+
+</body>
+</html>
