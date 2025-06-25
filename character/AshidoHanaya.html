@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>キャラクター紹介｜花谷芦戸</title>
+  <style>
+    body {
+      font-family: 'Yu Gothic', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #000000;
+      background-color: #6fb881; 
+
+    }
+
+    .profile {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .portrait-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .portrait-container {
+      position: relative;
+      width: 300px;
+      height: 500px;
+      overflow: hidden;
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .portrait {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .info p {
+      margin: 0.5rem 0;
+    }
+
+    .slider-buttons {
+      margin-top: 1rem;
+      text-align: center;
+    }
+
+    .slider-buttons button {
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .spoiler-overlay {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .spoiler-overlay button {
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #c0392b;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>花谷芦戸（はなやあしど）｜キャラクター紹介</h1>
+    <div class="profile">
+      <div class="portrait-wrapper">
+        <div class="portrait-container">
+          <img id="portrait" class="portrait" src="../image/AshidoHanaya.png" alt="花谷の立ち絵" />
+          <!-- <div id="spoilerOverlay" class="spoiler-overlay" style="display: none;">
+            <p>この立ち絵はネタバレを含みます。表示してもよろしいですか？</p>
+            <button onclick="revealSpoiler()">はい、表示する</button>
+          </div> -->
+        </div>
+        <div class="slider-buttons">
+          <button onclick="prevPortrait()">← 戻る</button>
+          <button onclick="nextPortrait()">進む →</button>
+        </div>
+      </div>
+      <div class="info">
+        <p><strong>性別：</strong>男性</p>
+        <!-- <p><strong>年齢：</strong>17歳</p>
+        <p><strong>職業：</strong>高校生</p> -->
+        <p><strong>概要：</strong>花谷の男の子～</p>
+        <p><strong>通過シナリオ</strong><br>
+            Good morning ALL HO重病人
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const portraits = [
+      { src: '../image/AshidoHanaya.png', spoiler: false },
+    //   { src: '../image/momokana1.png', spoiler: true },
+    //   { src: '../image/momokana2.png', spoiler: true },
+    //   { src: '../image/momokana3.png', spoiler: true },
+    //   { src: '../image/momokana4.png', spoiler: true },
+    ];
+
+    let currentIndex = 0;
+
+    function updatePortrait() {
+      const img = document.getElementById('portrait');
+      const overlay = document.getElementById('spoilerOverlay');
+      const current = portraits[currentIndex];
+      if (current.spoiler) {
+        overlay.style.display = 'flex';
+        img.style.visibility = 'hidden';
+      } else {
+        overlay.style.display = 'none';
+        img.src = current.src;
+        img.style.visibility = 'visible';
+      }
+    }
+
+    function nextPortrait() {
+      currentIndex = (currentIndex + 1) % portraits.length;
+      updatePortrait();
+    }
+
+    function prevPortrait() {
+      currentIndex = (currentIndex - 1 + portraits.length) % portraits.length;
+      updatePortrait();
+    }
+
+    function revealSpoiler() {
+      const img = document.getElementById('portrait');
+      const overlay = document.getElementById('spoilerOverlay');
+      img.src = portraits[currentIndex].src;
+      img.style.visibility = 'visible';
+      overlay.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
