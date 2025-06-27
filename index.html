@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,6 +25,7 @@
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
+      box-sizing: border-box;
     }
 
     .filter-buttons {
@@ -50,7 +52,7 @@
       border-radius: 10px;
       padding: 1.5rem;
       margin-bottom: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .scenario h2 {
@@ -99,12 +101,65 @@
       background-color: #f0f0f0;
       display: none;
     }
-   
+
 
     footer {
       text-align: center;
       padding: 2rem;
       color: #777;
+    }
+
+    #backToTop {
+      min-width: 44px;
+      min-height: 44px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #c0392b;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+
+    #backToTop:hover {
+      background-color: #a83227;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .filter-buttons button {
+        margin: 0.3rem 0.2rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .reveal-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      #searchInput {
+        width: 90%;
+      }
+
+      #backToTop {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+        bottom: 15px;
+        right: 15px;
+      }
     }
   </style>
 
@@ -124,14 +179,38 @@
         }
       });
     }
+
+    function sortScenariosByTitle() {
+      const container = document.querySelector("main");
+      const buttons = document.querySelector(".filter-buttons");
+      const scenarios = Array.from(document.querySelectorAll(".scenario"));
+
+      scenarios.sort((a, b) => {
+        const readingA = a.getAttribute("data-reading") || "";
+        const readingB = b.getAttribute("data-reading") || "";
+        return readingA.localeCompare(readingB, 'ja');
+      });
+
+      scenarios.forEach(scenario => {
+        container.appendChild(scenario);
+      });
+
+      container.insertBefore(buttons, container.firstChild);
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
   </script>
 </head>
+
 <body>
 
   <header>
     <h1>シナリオ通過記録</h1>
     <p>通過予定/通過中/通過済みに分かれています！<br>
-      キャラクター紹介にネタバレは含まれません！
+      キャラクター紹介のネタバレはワンクッションあるので安心してみてください～！
     </p>
   </header>
 
@@ -142,10 +221,16 @@
       <button onclick="filterScenarios('ongoing')">通過中</button>
       <button onclick="filterScenarios('notstarted')">通過予定</button>
     </div>
+    <div class="search-bar" style="text-align: center; margin-bottom: 1rem;">
+      <input type="text" id="searchInput" placeholder="タイトルで検索" oninput="searchScenarios()"
+        style="padding: 0.5rem; width: 60%; border-radius: 5px; border: 1px solid #ccc;" />
+    </div>
 
-    <div class="scenario" data-status="cleared">
+    <button onclick="sortScenariosByTitle()">50音順に並べる</button>
+
+    <div class="scenario" data-status="cleared" data-reading="はつこいせいすとっくほるむしょうこうぐん">
       <h2>初恋性ストックホルム症候群 <span class="status">通過済</span></h2>
-      <p><strong>プレイ日：</strong>未記録</p>
+      <p><strong>プレイ開始日：</strong>未記録</p>
       <p>
         <a href="https://trpgtanutanu.booth.pm/items/6407066" target="_blank" rel="noopener noreferrer">
           ▶ シナリオのBOOTHリンクはこちら
@@ -156,7 +241,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
+    <div class="scenario" data-status="cleared" data-reading="はなびえになくきせつ">
       <h2>花冷えに亡く季節 <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>HO1 『記』</p>
@@ -170,7 +255,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
+    <div class="scenario" data-status="cleared" data-reading="かいぶつたちとまほらかると">
       <h2>かいぶつたちとマホラカルト <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>HO4『天使』</p>
@@ -189,7 +274,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
+    <div class="scenario" data-status="cleared" data-reading="ぐっどもーにんぐおーる">
       <h2>Good morning ALL <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>『重病人』</p>
@@ -208,7 +293,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
+    <div class="scenario" data-status="cleared" data-reading="そーぷすくーる">
       <h2>ソープスクール <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>HO1</p>
@@ -227,7 +312,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
+    <div class="scenario" data-status="cleared" data-reading="ぐっどないとゆだ">
       <h2>Good night,Judas. <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>HO3</p>
@@ -241,7 +326,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
+    <div class="scenario" data-status="cleared" data-reading="でうすえくすまきなはしんだ">
       <h2>デウス・エクス・マキナは死んだ <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>HO2 『ヒト』</p>
@@ -260,8 +345,8 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
-      <h2>海も枯れるまで  <span class="status">通過済</span></h2>
+    <div class="scenario" data-status="cleared" data-reading="うみもかれるまで">
+      <h2>海も枯れるまで <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>HO1</p>
       <p>
@@ -274,8 +359,8 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
-      <h2>掠奪アルマディナ・アルファーデラ  <span class="status">通過済</span></h2>
+    <div class="scenario" data-status="cleared" data-reading="りゃくだつあるまでぃなあるふぁーでら">
+      <h2>掠奪アルマディナ・アルファーデラ <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>HO2</p>
       <p>
@@ -288,8 +373,8 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
-      <h2>鰯と柊  <span class="status">通過済</span></h2>
+    <div class="scenario" data-status="cleared" data-reading="いわしとひいらぎ">
+      <h2>鰯と柊 <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>HO2 『信者』</p>
       <p>
@@ -302,7 +387,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
+    <div class="scenario" data-status="cleared" data-reading="あやかしがかり">
       <h2> 怪士係 <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>HO3 『天狗』</p>
@@ -316,7 +401,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
+    <div class="scenario" data-status="cleared" data-reading="ぷらとんのよだん">
       <h2> プラトンの余談 <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>HO1 『語り部』</p>
@@ -330,7 +415,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
+    <div class="scenario" data-status="cleared" data-reading="うしみつどきのばんにんどもよ">
       <h2> 丑三つ時の番人共よ。 <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>未記録</p>
       <p><strong>HO：</strong>HO2 『野良』</p>
@@ -344,7 +429,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="ongoing">
+    <div class="scenario" data-status="ongoing" data-reading="こすもすくれあしおん">
       <h2> CosmosƆREatiOn <span class="status">通過中</span></h2>
       <p><strong>プレイ開始日：</strong>2025/6/1</p>
       <p><strong>HO：</strong>HO1</p>
@@ -358,7 +443,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="notstarted">
+    <div class="scenario" data-status="notstarted" data-reading="おなじそらにはのぼれない">
       <h2> 同じ空には昇れない。 <span class="status">通過予定</span></h2>
       <p><strong>プレイ開始日：</strong>2025/7/14</p>
       <p><strong>HO：</strong>HO太陽</p>
@@ -372,7 +457,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="cleared">
+    <div class="scenario" data-status="cleared" data-reading="んんんん">
       <h2> テストプレイ卓 <span class="status">通過済</span></h2>
       <p><strong>プレイ開始日：</strong>2025/6/10</p>
       <p><strong>HO：</strong>HO1</p>
@@ -386,7 +471,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="notstarted">
+    <div class="scenario" data-status="notstarted" data-reading="ようこそめいめいしやくしょとしでんせつかへ">
       <h2> ようこそ！迷冥市役所都市伝説課へ！ <span class="status">通過予定</span></h2>
       <p><strong>プレイ開始日：</strong>2025/8/1</p>
       <p><strong>HO：</strong>HO1 『都市伝説課の担当者』</p>
@@ -400,7 +485,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="notstarted">
+    <div class="scenario" data-status="notstarted" data-reading="さくもいわぬもはなしだい">
       <h2> 咲くも言わぬも花次第 <span class="status">通過予定</span></h2>
       <p><strong>プレイ開始日：</strong>2025/8/4</p>
       <p><strong>HO：</strong>HO1 『椿』</p>
@@ -414,7 +499,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="notstarted">
+    <div class="scenario" data-status="notstarted" data-reading="あおいとりがないた">
       <h2> 青い鳥がないた <span class="status">通過予定</span></h2>
       <p><strong>プレイ開始日：</strong>2025/7/28</p>
       <!-- <p><strong>HO：</strong>HO1 『椿』</p> -->
@@ -428,7 +513,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="notstarted">
+    <div class="scenario" data-status="notstarted" data-reading="りばーすりばーすりばーす">
       <h2> リバースリバースリバース <span class="status">通過予定</span></h2>
       <p><strong>プレイ開始日：</strong>2025/9/1</p>
       <p><strong>HO：</strong>HO2 『天秤』</p>
@@ -442,7 +527,7 @@
       </div>
     </div>
 
-    <div class="scenario" data-status="notstarted">
+    <div class="scenario" data-status="notstarted" data-reading="にわしはなにをくちずさむ">
       <h2> 庭師は何を口遊む <span class="status">通過予定</span></h2>
       <p><strong>プレイ開始日：</strong>2026/2/7</p>
       <p><strong>HO：</strong>HO3</p>
@@ -461,6 +546,7 @@
   <footer>
     &copy; トマトの精霊。シナリオ通過記録
   </footer>
-
+  <button onclick="scrollToTop()" id="backToTop">↑ 上へ戻る</button>
 </body>
+
 </html>
