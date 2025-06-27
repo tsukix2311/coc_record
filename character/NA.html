@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,7 +26,7 @@
       text-align: center;
       margin-bottom: 2rem;
       color: #000000;
-      background-color: #009688; 
+      background-color: #009688;
 
     }
 
@@ -101,8 +102,45 @@
       cursor: pointer;
       border-radius: 5px;
     }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .profile {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .portrait-container {
+        width: 100%;
+        height: auto;
+      }
+
+      .portrait {
+        height: auto;
+      }
+
+      .slider-buttons button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .info {
+        width: 100%;
+        text-align: left;
+        margin-top: 1rem;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+        padding: 1rem;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>NA（エヌエー）｜キャラクター紹介</h1>
@@ -126,15 +164,15 @@
         <p><strong>職業：</strong>理科教師</p> -->
         <p><strong>概要：</strong>すごく好き。</p>
         <p><strong>通過シナリオ</strong><br>
-            <a href="https://matumaru1232.booth.pm/items/1371817" target="_blank" rel="noopener noreferrer">
-                デウス・エクス・マキナは死んだ HO2
-            </a><br>
-            <a href="https://matumaru1232.booth.pm/items/2633522" target="_blank" rel="noopener noreferrer">
-                アポ・メーカネース・テオスの追憶
-            </a><br>
-            <a href="https://wtm-mdms.booth.pm/items/5563855" target="_blank" rel="noopener noreferrer">
-                天国の偽称 HO2
-            </a><br>
+          <a href="https://matumaru1232.booth.pm/items/1371817" target="_blank" rel="noopener noreferrer">
+            デウス・エクス・マキナは死んだ HO2
+          </a><br>
+          <a href="https://matumaru1232.booth.pm/items/2633522" target="_blank" rel="noopener noreferrer">
+            アポ・メーカネース・テオスの追憶
+          </a><br>
+          <a href="https://wtm-mdms.booth.pm/items/5563855" target="_blank" rel="noopener noreferrer">
+            天国の偽称 HO2
+          </a><br>
         </p>
       </div>
     </div>
@@ -145,12 +183,12 @@
       { src: '../image/NA.png', spoiler: false },
       { src: '../image/NA2.png', spoiler: false },
       { src: '../image/NA3.png', spoiler: false },
-    //   { src: '../image/pingbr.png', spoiler: false },
-    //   { src: '../image/momokaA.png', spoiler: false },
-    //   { src: '../image/momokana1.png', spoiler: true },
-    //   { src: '../image/momokana2.png', spoiler: true },
-    //   { src: '../image/momokana3.png', spoiler: true },
-    //   { src: '../image/momokana4.png', spoiler: true },
+      //   { src: '../image/pingbr.png', spoiler: false },
+      //   { src: '../image/momokaA.png', spoiler: false },
+      //   { src: '../image/momokana1.png', spoiler: true },
+      //   { src: '../image/momokana2.png', spoiler: true },
+      //   { src: '../image/momokana3.png', spoiler: true },
+      //   { src: '../image/momokana4.png', spoiler: true },
     ];
 
     let currentIndex = 0;
@@ -188,4 +226,5 @@
     }
   </script>
 </body>
+
 </html>

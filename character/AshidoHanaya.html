@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,7 +26,7 @@
       text-align: center;
       margin-bottom: 2rem;
       color: #000000;
-      background-color: #6fb881; 
+      background-color: #6fb881;
 
     }
 
@@ -101,8 +102,45 @@
       cursor: pointer;
       border-radius: 5px;
     }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .profile {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .portrait-container {
+        width: 100%;
+        height: auto;
+      }
+
+      .portrait {
+        height: auto;
+      }
+
+      .slider-buttons button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .info {
+        width: 100%;
+        text-align: left;
+        margin-top: 1rem;
+      }
+
+      h1 {
+        font-size: 1.4rem;
+        padding: 1rem;
+      }
+    }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>花谷芦戸（はなやあしど）｜キャラクター紹介</h1>
@@ -124,9 +162,9 @@
         <p><strong>性別：</strong>男性</p>
         <!-- <p><strong>年齢：</strong>17歳</p>
         <p><strong>職業：</strong>高校生</p> -->
-        <p><strong>概要：</strong>花谷の男の子～</p>
+        <p><strong>概要：</strong>花屋の男の子～</p>
         <p><strong>通過シナリオ</strong><br>
-            Good morning ALL HO重病人
+          Good morning ALL HO重病人
         </p>
       </div>
     </div>
@@ -135,10 +173,10 @@
   <script>
     const portraits = [
       { src: '../image/AshidoHanaya.png', spoiler: false },
-    //   { src: '../image/momokana1.png', spoiler: true },
-    //   { src: '../image/momokana2.png', spoiler: true },
-    //   { src: '../image/momokana3.png', spoiler: true },
-    //   { src: '../image/momokana4.png', spoiler: true },
+      //   { src: '../image/momokana1.png', spoiler: true },
+      //   { src: '../image/momokana2.png', spoiler: true },
+      //   { src: '../image/momokana3.png', spoiler: true },
+      //   { src: '../image/momokana4.png', spoiler: true },
     ];
 
     let currentIndex = 0;
@@ -176,4 +214,5 @@
     }
   </script>
 </body>
+
 </html>
