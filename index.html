@@ -202,6 +202,19 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    function searchScenarios() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const scenarios = document.querySelectorAll(".scenario");
+
+    scenarios.forEach(scenario => {
+      const title = scenario.querySelector("h2").innerText.toLowerCase();
+      if (title.includes(input)) {
+        scenario.style.display = "block";
+      } else {
+        scenario.style.display = "none";
+      }
+    });
+  }
   </script>
 </head>
 
