@@ -202,19 +202,41 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function searchScenarios() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
-    const scenarios = document.querySelectorAll(".scenario");
+    function toHiragana(str) {
+      return str.replace(/[\u30a1-\u30f6]/g, function (match) {
+        return String.fromCharCode(match.charCodeAt(0) - 0x60);
+      });
+    }
 
-    scenarios.forEach(scenario => {
-      const title = scenario.querySelector("h2").innerText.toLowerCase();
-      if (title.includes(input)) {
-        scenario.style.display = "block";
-      } else {
-        scenario.style.display = "none";
-      }
-    });
-  }
+    function toKatakana(str) {
+      return str.replace(/[\u3041-\u3096]/g, function (match) {
+        return String.fromCharCode(match.charCodeAt(0) + 0x60);
+      });
+    }
+
+    function searchScenarios() {
+      const input = document.getElementById("searchInput").value.trim().toLowerCase();
+      const inputHira = toHiragana(input);
+      const inputKata = toKatakana(input);
+
+      const scenarios = document.querySelectorAll(".scenario");
+
+      scenarios.forEach(scenario => {
+        const title = scenario.querySelector("h2").innerText.toLowerCase();
+        const reading = scenario.getAttribute("data-reading") || "";
+
+        const match =
+          title.includes(input) ||
+          title.includes(inputHira) ||
+          title.includes(inputKata) ||
+          reading.includes(input) ||
+          reading.includes(inputHira) ||
+          reading.includes(inputKata);
+
+        scenario.style.display = match ? "block" : "none";
+      });
+    }
+
   </script>
 </head>
 
